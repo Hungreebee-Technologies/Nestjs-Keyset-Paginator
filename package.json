@@ -1,6 +1,6 @@
 {
   "name": "nestjs-keyset-paginator",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "a simple pagination library made for nestjs(mongoose) by hungreebee technologies",
   "main": "dist",
   "types": "dist",
