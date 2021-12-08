@@ -63,7 +63,7 @@ export class ExampleService {
         sort_order?: number,
         filter?: filterDto[]
     ) {
-        return paginate(this.notificationModel, skip, limit, start_key, sort_field, sort_order, filter)
+        return paginate(this.exampleModel, skip, limit, start_key, sort_field, sort_order, filter)
     }
 }
 ```
@@ -78,6 +78,10 @@ export class ExampleService {
 
 ## Example param
 
+-refer [src/common.types.ts](https://github.com/Hungreebee-Technologies/Nestjs-Keyset-Paginator/blob/master/src/common.types.ts) for all supported filters and search types.
+
+Example:-
+
 ```json
 {
     "filter": [
@@ -87,7 +91,7 @@ export class ExampleService {
             "operator": "lt"
         },
         {
-            "name": "is_in_comp",
+            "name": "isPassed",
             "value": true,
             "operator": "eq"
         }
@@ -99,6 +103,45 @@ export class ExampleService {
     "limit": 4
 }
 ```
+
+-   as response you will also get "next_key".
+
+```json
+Example:
+    "next_key": {
+        "_id": "61a842ae229ec188b04581bb"
+    }
+```
+
+-   to get next page use this "next_key" object as "start_key" in next request
+
+```json
+Example:
+{
+    "filter": [
+        {
+            "name": "score",
+            "value": 400,
+            "operator": "lt"
+        },
+        {
+            "name": "isPassed",
+            "value": true,
+            "operator": "eq"
+        }
+    ],
+    "sort": {
+        "field": "score",
+        "order": 1
+    },
+    "limit": 4,
+    "start_key": {
+    "_id": "61a842ae229ec188b04581bb"
+    }
+}
+```
+
+-   if you provide "start_key" this will skip previous Documents
 
 ## Contributing
 
