@@ -1,36 +1,41 @@
 export enum filterOperatorType {
-    'eq',
     /**
      * Equal to
-     */ 'gt',
+     */
+    'eq',
     /**
      * Greater than
-     */ 'gte',
+     */
+    'gt',
     /**
      * Greater than or equal to
-     */ 'lt',
+     */
+    'gte',
     /**
      * Less than
-     */ 'lte',
+     */
+    'lt',
     /**
      * Less than or equal to
-     */ 'regex'
+     */
+    'lte',
     /**
      * Regular expression
      */
+    'regex'
 }
 
 export enum filterSearchModeType {
-    'swm'
     /**
      * Start With Mode
-     */,
-    'bnm'
+     */
+    'swm',
     /**
      * Begin With Mode
-     */,
-    'ewm'
+     */
+    'bnm',
     /**
      * End With Mode
      */
+    'ewm'
 }
