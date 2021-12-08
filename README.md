@@ -8,6 +8,10 @@ keyset pagination library made for nestjs(mongoose) by hungreebee technologies
 
 [![npm version](https://badge.fury.io/js/nestjs-keyset-paginator.svg)](https://www.npmjs.com/package/nestjs-keyset-paginator)
 
+<br>
+
+### [Documentation](https://hungreebee-technologies.github.io/Nestjs-Keyset-Paginator/)
+
 </div>
 
 ## Installation
