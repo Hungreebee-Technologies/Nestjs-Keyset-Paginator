@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "target": "es6",
+        "lib": ["ESNext"],
+        "module": "commonjs",
+        "declaration": true,
+        "outDir": "./dist",
+        "resolveJsonModule": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "strictNullChecks": false,
+        "noImplicitAny": false
+    },
+    "include": ["src/**/*"]
+}

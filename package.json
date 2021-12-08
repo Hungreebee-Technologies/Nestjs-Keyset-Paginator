@@ -1,0 +1,63 @@
+{
+  "name": "nestjs-keyset-paginator",
+  "version": "1.0.0",
+  "description": "a simple pagination library made for nestjs(mongoose) by hungreebee technologies",
+  "main": "dist",
+  "types": "dist",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc -p .",
+    "doc": "typedoc",
+    "lint": "eslint \"src/**/*.ts\"",
+    "prepublish": "npm run build",
+    "fmt": "prettier --config .prettierrc \"**/*.{ts,mjs}\" --write",
+    "release": "release-it"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hungreebee-Technologies/Nestjs-Keyset-Paginator.git"
+  },
+  "keywords": [
+    "nestjs",
+    "keyset",
+    "pagination",
+    "hungreebee",
+    "typescript",
+    "mongoose"
+  ],
+  "authors": [
+    {
+      "name": "Sushant Zope",
+      "url": "https://github.com/sushant9096"
+    },
+    {
+      "name": "Shubham Badgujar",
+      "url": "https://github.com/shubham8550"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hungreebee-Technologies/Nestjs-Keyset-Paginator/issues"
+  },
+  "homepage": "https://github.com/Hungreebee-Technologies/Nestjs-Keyset-Paginator#readme",
+  "devDependencies": {
+    "@types/node": "^16.11.12",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
+    "eslint": "^8.4.1",
+    "prettier": "2.5.1",
+    "release-it": "^14.11.8",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.4.0",
+    "typedoc": "^0.22.10",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.13.2",
+    "mongoose": "^6.1.0"
+  }
+}
