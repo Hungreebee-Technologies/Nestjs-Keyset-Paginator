@@ -27,7 +27,7 @@ npm i nestjs-keyset-paginator
 -   in example.controller.ts use PaginationDto to Validate params and pass it to service.
 
 ```typescript
-import { PaginationDto } from 'nestjs-keyset-paginator/dist'
+import { PaginationDto, projectionDto } from 'nestjs-keyset-paginator'
 
 @Controller('example')
 export class ExampleController {
@@ -40,7 +40,8 @@ export class ExampleController {
             params?.start_key,
             params?.sort?.field,
             params?.sort?.order,
-            params?.filter
+            params?.filter,
+            params?.projectionDto
         )
     }
 }
@@ -50,25 +51,27 @@ export class ExampleController {
 - then in exapmle.service.ts pass those params to "paginate()" along with you model (Mongoose Model).
 
 ```typescript
-import paginate, { filterDto } from 'nestjs-keyset-paginator/dist'
+import paginate, { filterDto, projectionDto } from 'nestjs-keyset-paginator'
 
 @Injectable()
 export class ExampleService {
-    constructor(
-        @Inject(EXAMPLE_MODEL)
-        private readonly exampleModel: Model<ExampleDocument>
-    ) {}
+  constructor(
+    @Inject(EXAMPLE_MODEL)
+    private readonly exampleModel: Model<ExampleDocument>
+  ) {
+  }
 
-    async findAll(
-        skip = 0,
-        limit = 10,
-        start_key?: string,
-        sort_field?: string,
-        sort_order?: number,
-        filter?: filterDto[]
-    ) {
-        return paginate(this.exampleModel, skip, limit, start_key, sort_field, sort_order, filter)
-    }
+  async findAll(
+    skip = 0,
+    limit = 10,
+    start_key?: string,
+    sort_field?: string,
+    sort_order?: number,
+    filter?: filterDto[],
+    projection?: projectionDto
+  ) {
+    return paginate(this.exampleModel, skip, limit, start_key, sort_field, sort_order, filter)
+  }
 }
 ```
 
@@ -104,23 +107,28 @@ Example:-
         "field": "score",
         "order": 1
     },
+    "projection":  {
+      "password": 0
+    },
     "limit": 4
 }
 ```
 
 -   as response you will also get "next_key".
 
-```json
 Example:
-    "next_key": {
-        "_id": "61a842ae229ec188b04581bb"
-    }
+```json
+{
+  "next_key": {
+    "_id": "61a842ae229ec188b04581bb"
+  }
+}
 ```
 
--   to get next page use this "next_key" object as "start_key" in next request
-
-```json
+- to get next page use this "next_key" object as "start_key" in next request
+    
 Example:
+```json
 {
     "filter": [
         {
