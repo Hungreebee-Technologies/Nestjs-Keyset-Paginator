@@ -8,7 +8,7 @@ export const generatePaginationFilter = (filter: filterDto[]) => {
     const filter_fn = {}
     for (const filterElement of filter) {
         if ('' + filterElement.operator === 'regex') {
-            let exp = new RegExp(filterElement.value, 'i');
+            let exp = new RegExp(<string> filterElement.value, 'i');
             if (filterElement.mode === 'swm') {
                 exp = new RegExp('^' + filterElement.value + '.*', 'i');
             }
