@@ -41,7 +41,7 @@ export class ExampleController {
             params?.sort?.field,
             params?.sort?.order,
             params?.filter,
-            params?.projectionDto
+            params?.projection
         )
     }
 }
@@ -55,23 +55,22 @@ import paginate, { filterDto, projectionDto } from 'nestjs-keyset-paginator'
 
 @Injectable()
 export class ExampleService {
-  constructor(
-    @Inject(EXAMPLE_MODEL)
-    private readonly exampleModel: Model<ExampleDocument>
-  ) {
-  }
+    constructor(
+        @Inject(EXAMPLE_MODEL)
+        private readonly exampleModel: Model<ExampleDocument>
+    ) {}
 
-  async findAll(
-    skip = 0,
-    limit = 10,
-    start_key?: string,
-    sort_field?: string,
-    sort_order?: number,
-    filter?: filterDto[],
-    projection?: projectionDto
-  ) {
-    return paginate(this.exampleModel, skip, limit, start_key, sort_field, sort_order, filter)
-  }
+    async findAll(
+        skip = 0,
+        limit = 10,
+        start_key?,
+        sort_field?: string,
+        sort_order?: number,
+        filter?: filterDto[],
+        projection?: projectionDto
+    ) {
+        return paginate(this.exampleModel, skip, limit, start_key, sort_field, sort_order, filter, projection)
+    }
 }
 ```
 
@@ -107,8 +106,8 @@ Example:-
         "field": "score",
         "order": 1
     },
-    "projection":  {
-      "password": 0
+    "projection": {
+        "password": 0
     },
     "limit": 4
 }
@@ -117,17 +116,19 @@ Example:-
 -   as response you will also get "next_key".
 
 Example:
+
 ```json
 {
-  "next_key": {
-    "_id": "61a842ae229ec188b04581bb"
-  }
+    "next_key": {
+        "_id": "61a842ae229ec188b04581bb"
+    }
 }
 ```
 
-- to get next page use this "next_key" object as "start_key" in next request
-    
+-   to get next page use this "next_key" object as "start_key" in next request
+
 Example:
+
 ```json
 {
     "filter": [
@@ -148,7 +149,7 @@ Example:
     },
     "limit": 4,
     "start_key": {
-    "_id": "61a842ae229ec188b04581bb"
+        "_id": "61a842ae229ec188b04581bb"
     }
 }
 ```
