@@ -4,7 +4,7 @@
 
 # Nestjs-Keyset-Paginator
 
-keyset pagination library made for nestjs(mongoose) by hungreebee technologies
+Keyset pagination library made for nestjs(mongoose) by hungreebee technologies
 
 [![npm version](https://badge.fury.io/js/nestjs-keyset-paginator.svg)](https://www.npmjs.com/package/nestjs-keyset-paginator)
 
@@ -26,7 +26,7 @@ npm i nestjs-keyset-paginator
 
 ## Usage
 
-- in example.controller.ts use PaginationDto to Validate params and pass it to service.
+- In example.controller.ts use PaginationDto to Validate params and pass it to service.
 
 ```typescript
 import { PaginationDto, projectionDto } from 'nestjs-keyset-paginator'
@@ -51,8 +51,7 @@ export class ExampleController {
 }
 ```
 
-<br>
-- then in exapmle.service.ts pass those params to "paginate()" along with you model (Mongoose Model).
+- Then in example.service.ts pass those params to "paginate()" along with you model (Mongoose Model).
 
 ```typescript
 import paginate, { filterDto, projectionDto } from 'nestjs-keyset-paginator'
@@ -79,7 +78,7 @@ export class ExampleService {
 }
 ```
 
-- paginate function will return with promise of
+- Paginate function will return with promise of:
 
 ```
 { docs: docs, next_key }
@@ -89,7 +88,7 @@ export class ExampleService {
 
 ## Example param
 
--refer [src/common.types.ts](https://github.com/Hungreebee-Technologies/Nestjs-Keyset-Paginator/blob/master/src/common.types.ts)
+- Refer [src/common.types.ts](https://github.com/Hungreebee-Technologies/Nestjs-Keyset-Paginator/blob/master/src/common.types.ts)
 for all supported filters and search types.
 
 Example:-
@@ -122,7 +121,7 @@ Example:-
 }
 ```
 
-- as response you will also get "next_key".
+- As response, you will also get "next_key".
 
 Example:
 
@@ -141,7 +140,7 @@ Example:
 }
 ```
 
-- to get next page use this "next_key" object as "start_key" in next request
+- To get next page use this "next_key" object as "start_key" in next request.
 
 Example:
 
@@ -177,7 +176,7 @@ Example:
 }
 ```
 
-- if you provide "start_key" this will skip previous Documents
+- If you provide "start_key" this will skip previous Documents.
 
 ## Contributing
 
