@@ -8,14 +8,14 @@ Keyset pagination library made for nestjs(mongoose) by hungreebee technologies
 
 [![npm version](https://badge.fury.io/js/nestjs-keyset-paginator.svg)](https://www.npmjs.com/package/nestjs-keyset-paginator)
 
-<br>
 ### [Documentation](https://hungreebee-technologies.github.io/Nestjs-Keyset-Paginator/)
 
 </div>
 
-## Changelog
-- Current Version 3.0.0 is not backward compatible.
-- Version 2.0.4 to 2.0.6 are unstable, So we recommend using 3.0.0.
+## Changelog 3.0.1
+- This version is backward compatible.
+- Added $in and $nin mongo operator support in DTO.
+
 ## Installation
 
 Use the package manager [npm](npmjs.com/package/nestjs-keyset-paginator) to install Nestjs-Keyset-Paginator.
@@ -105,6 +105,16 @@ Example:-
       "name": "isPassed",
       "value": true,
       "operator": "eq"
+    },
+    {
+      "name": "time",
+      "value": [40, 60],
+      "operator": "in"
+    },
+    {
+      "name": "left_count",
+      "value": [0, 1],
+      "operator": "nin"
     }
   ],
   "sort": {
