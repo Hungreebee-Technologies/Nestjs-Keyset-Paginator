@@ -1,56 +1,82 @@
 import {
+    ArrayMaxSize,
+    ArrayMinSize,
+    IsEnum,
+    IsInt,
     IsNumber,
-    Min,
     IsOptional,
     IsString,
-    MinLength,
-    MaxLength,
-    Max,
-    ValidateNested,
-    IsEnum,
-    ValidateIf,
     Matches,
-    IsInt,
-    ArrayMinSize,
-    ArrayMaxSize
+    Max,
+    MaxLength,
+    Min,
+    MinLength,
+    ValidateIf,
+    ValidateNested
 } from 'class-validator'
 import { Type } from 'class-transformer'
-import { filterOperatorType, filterSearchModeType, mongoRegex } from '../common.types'
+import {
+    ENUM_FILTER_OPERATOR_TYPE,
+    REGEX_MONGO_FIELD_NAME,
+    REGEX_SEARCH_MODE_TYPE,
+    TYPE_STRING_NUM_ARRAY
+} from '../common.types'
+import { IsValidMongoFilterValue } from '../decorators/is-valid-mongo-filter-value'
+import { IsMongoArrValue } from '../decorators/is-mongo-arr-value'
+import { IsValidMongoSortOrderValue } from '../decorators/is-valid-mongo-sort-order-value'
 
 class sortDto {
     @IsString()
-    @Matches(mongoRegex)
+    @Matches(REGEX_MONGO_FIELD_NAME)
     @MinLength(2)
     @MaxLength(20)
     field
 
-    // @IsInt()
-    order: 1 | -1
+    @IsValidMongoSortOrderValue()
+    order: number
 }
 
 export class filterDto {
     @IsString()
-    @Matches(mongoRegex)
+    @Matches(REGEX_MONGO_FIELD_NAME)
     @MinLength(2)
     @MaxLength(20)
     name
 
     /*@IsNumberString()
-      @IsString()
-      @Length(3, 20)*/
-    value: unknown
+    @IsString()
+    @Length(3, 20)*/
+    @ValidateIf(
+        (object) =>
+            object.operator ===
+            (ENUM_FILTER_OPERATOR_TYPE.eq ||
+                ENUM_FILTER_OPERATOR_TYPE.gt ||
+                ENUM_FILTER_OPERATOR_TYPE.gte ||
+                ENUM_FILTER_OPERATOR_TYPE.lt ||
+                ENUM_FILTER_OPERATOR_TYPE.lte)
+    )
+    @IsValidMongoFilterValue()
+    value
 
-    @IsEnum(filterOperatorType)
-    operator: filterOperatorType
+    @ValidateIf((object) => {
+        // console.log(object)
+        // console.log(object.operator === (ENUM_FILTER_OPERATOR_TYPE._in || ENUM_FILTER_OPERATOR_TYPE._nin))
+        return object.operator === (ENUM_FILTER_OPERATOR_TYPE._in || ENUM_FILTER_OPERATOR_TYPE._nin)
+    })
+    @IsMongoArrValue(100)
+    arr_value: TYPE_STRING_NUM_ARRAY
+
+    @IsEnum(ENUM_FILTER_OPERATOR_TYPE)
+    operator: ENUM_FILTER_OPERATOR_TYPE
 
     @ValidateIf((object) => object.operator === 'regex')
-    @IsEnum(filterSearchModeType)
+    @IsEnum(REGEX_SEARCH_MODE_TYPE)
     mode: string
 }
 
 export class projectionDto {
     @IsString()
-    @Matches(mongoRegex)
+    @Matches(REGEX_MONGO_FIELD_NAME)
     @MinLength(2)
     @MaxLength(20)
     name
@@ -63,7 +89,7 @@ export class projectionDto {
 
 export class startKeyDto {
     @IsString()
-    @Matches(mongoRegex)
+    @Matches(REGEX_MONGO_FIELD_NAME)
     @MinLength(2)
     @MaxLength(20)
     key
@@ -85,14 +111,14 @@ export class PaginationDto {
     @Type(() => Number)
     @IsNumber()
     @Min(0)
-    skip?: number
+    skip: number
 
     @IsOptional()
     @Type(() => Number)
     @IsNumber()
     @Min(1)
     @Max(100)
-    limit?: number
+    limit: number
 
     @Type(() => sortDto)
     @ValidateNested()

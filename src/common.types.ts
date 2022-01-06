@@ -1,49 +1,59 @@
-export enum filterOperatorType {
+export enum ENUM_FILTER_OPERATOR_TYPE {
     /**
      * Equal to
      */
-    'eq',
+    eq = 'eq',
     /**
      * Greater than
      */
-    'gt',
+    gt = 'gt',
     /**
      * Greater than or equal to
      */
-    'gte',
+    gte = 'gte',
     /**
      * Less than
      */
-    'lt',
+    lt = 'lt',
     /**
      * Less than or equal to
      */
-    'lte',
+    lte = 'lte',
     /**
      * Regular expression
      */
-    'regex'
+    regex = 'regex',
+    /**
+     * Array based search with "$in" mongo operator
+     */
+    _in = 'in',
+    /**
+     * Array based search with "$nin" mongo operator
+     */
+    _nin = 'nin'
 }
 
-export enum filterSearchModeType {
+export enum REGEX_SEARCH_MODE_TYPE {
     /**
      * Start With Mode
      */
-    'swm',
+    swm = 'swm',
     /**
      * Begin With Mode
      */
-    'bnm',
+    bnm = 'bnm',
     /**
      * End With Mode
      */
-    'ewm'
+    ewm = 'ewm'
 }
 
-export type ValidMongoField = string & { __validMongoField: true }
+export type VALID_MONGO_FIELD = string & { __validMongoField: true }
 
-export const mongoRegex = /^[a-zA-Z_]+$/
+export type TYPE_STRING_NUM_ARRAY = (string | number)[]
 
-const isValidMongoField = (x: string): x is ValidMongoField => {
-    return mongoRegex.test(x)
+export const REGEX_MONGO_FIELD_NAME = /^[a-zA-Z_]+$/
+
+const isValidMongoField = (x: string): x is VALID_MONGO_FIELD => {
+    return REGEX_MONGO_FIELD_NAME.test(x)
 }

@@ -10,6 +10,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc -p .",
+    "build:pack": "npm run build && cd builds && npm pack ../",
     "doc": "typedoc",
     "lint": "eslint \"src/**/*.ts\"",
     "prepublish": "npm run build",

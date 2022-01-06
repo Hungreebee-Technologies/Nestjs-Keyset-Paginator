@@ -33,4 +33,4 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-/nestjs-keyset-paginator-2.0.6.tgz
+/builds
