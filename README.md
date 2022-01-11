@@ -12,6 +12,10 @@ Keyset pagination library made for nestjs(mongoose) by hungreebee technologies
 
 </div>
 
+## Changelog 3.0.2
+- fixed crash when sort value is null
+- fixed nextKeyFn crash issue
+
 ## Changelog 3.0.1
 - This version is backward compatible.
 - Added $in and $nin mongo operator support in DTO.

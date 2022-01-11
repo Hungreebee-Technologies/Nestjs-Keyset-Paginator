@@ -25,13 +25,14 @@ export const paginate = async (
     filter?: filterDto[],
     projection?: projectionDto[]
 ) => {
+    const model_paths = Object.keys(model.schema.paths)
     let filter_fn = {}
     let query_fn
     // console.log(filter);
     if (filter) filter_fn = generatePaginationFilter(filter)
     // console.log(filter);
     let sort = null
-    if (sort_field && sort_order) {
+    if (sort_field && sort_order && model_paths.includes(sort_field)) {
         sort = [sort_field, sort_order]
     }
     let start_key_fn = null

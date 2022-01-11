@@ -34,7 +34,7 @@ export const generatePaginationQuery = (query, sort?, nextKey?) => {
     if (sort == null) {
         paginatedQuery._id = { $gt: nextKey._id }
         // console.log('sort null return')
-        return { paginatedQuery, nextKey }
+        return { paginatedQuery, nextKeyFn }
     }
 
     const sortOperator = sort[1] === 1 ? '$gt' : '$lt'

@@ -4,10 +4,12 @@ export const generatePaginationNextKeyDtoArr = (next_key) => {
     if (next_key === null) return undefined
 
     for (const nextKeyElement of Object.keys(next_key)) {
-        arr.push({
-            key: nextKeyElement,
-            value: next_key[nextKeyElement]
-        })
+        // console.log(next_key[nextKeyElement])
+        next_key[nextKeyElement] !== undefined &&
+            arr.push({
+                key: nextKeyElement,
+                value: next_key[nextKeyElement]
+            })
     }
 
     return arr
