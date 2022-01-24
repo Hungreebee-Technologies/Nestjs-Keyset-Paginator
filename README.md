@@ -119,7 +119,12 @@ Example:-
       "name": "left_count",
       "value": [0, 1],
       "operator": "nin"
-    }
+    },
+    {
+      "name": "$text",
+      "value": 'Text query based on indexed fields',
+      "operator": "$text"
+    },
   ],
   "sort": {
     "field": "score",
