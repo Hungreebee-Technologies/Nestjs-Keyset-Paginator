@@ -48,12 +48,8 @@ export enum REGEX_SEARCH_MODE_TYPE {
     ewm = 'ewm'
 }
 
-export type VALID_MONGO_FIELD = string & { __validMongoField: true }
-
 export type TYPE_STRING_NUM_ARRAY = (string | number)[]
 
 export const REGEX_MONGO_FIELD_NAME = /^[a-zA-Z_]+$/
 
-const isValidMongoField = (x: string): x is VALID_MONGO_FIELD => {
-    return REGEX_MONGO_FIELD_NAME.test(x)
-}
+export type TYPE_MONGO_FIELD_NAME = string | string[]

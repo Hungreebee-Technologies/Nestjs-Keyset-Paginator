@@ -12,6 +12,11 @@ Keyset pagination library made for nestjs(mongoose) by hungreebee technologies
 
 </div>
 
+## Changelog 3.0.3
+- Added support for nested field name in filterDto
+- Done some corrections in PaginationDto
+- Added OOP based approach initially
+
 ## Changelog 3.0.2
 - fixed crash when sort value is null
 - fixed nextKeyFn crash issue

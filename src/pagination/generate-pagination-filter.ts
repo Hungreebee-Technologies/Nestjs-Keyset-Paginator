@@ -1,4 +1,5 @@
 import { filterDto } from './pagination.dto'
+import { generateMongoFilterKeyName } from '../common/generate-mongo-filter-key-name'
 
 /**
  * @param  {filterDto[]} filter
@@ -19,15 +20,15 @@ export const generatePaginationFilter = (filter: filterDto[]) => {
                 // console.log('EWM\n');
                 exp = new RegExp(filterElement.value + '.*', 'i')
             }
-            filter_fn[filterElement.name] = {
+            filter_fn[generateMongoFilterKeyName(filterElement.name)] = {
                 ['$' + filterElement.operator]: exp
             }
         } else if (filterElement.operator === 'in' || filterElement.operator === 'nin') {
-            filter_fn[filterElement.name] = {
+            filter_fn[generateMongoFilterKeyName(filterElement.name)] = {
                 ['$' + filterElement.operator]: filterElement.arr_value
             }
         } else
-            filter_fn[filterElement.name] = {
+            filter_fn[generateMongoFilterKeyName(filterElement.name)] = {
                 ['$' + filterElement.operator]: filterElement.value
             }
     }
