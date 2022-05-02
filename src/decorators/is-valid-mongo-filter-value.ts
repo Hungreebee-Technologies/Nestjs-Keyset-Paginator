@@ -39,7 +39,7 @@ export const IsValidMongoFilterValue = (
                         return typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean'
                     } else if (operator === ENUM_FILTER_OPERATOR_TYPE.regex) {
                         return typeof value === 'string'
-                    } else return false
+                    } else return true
                 },
                 defaultMessage(validationArguments?: ValidationArguments): string {
                     let errMsg = 'value must be string or number or boolean'

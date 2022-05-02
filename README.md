@@ -12,6 +12,11 @@ Keyset pagination library made for nestjs(mongoose) by hungreebee technologies
 
 </div>
 
+## Changelog 3.0.4
+- Fixed PaginationDto for "$in" operator
+- Remove unusual log
+- Updated Examples
+
 ## Changelog 3.0.3
 - Added support for nested field name in filterDto
 - Done some corrections in PaginationDto
@@ -116,13 +121,18 @@ Example:-
       "operator": "eq"
     },
     {
+      "name": ["outer_field_name", "inner_field_name"],
+      "value": "user one",
+      "operator": "eq"
+    },
+    {
       "name": "time",
-      "value": [40, 60],
+      "arr_value": [40, 60],
       "operator": "in"
     },
     {
       "name": "left_count",
-      "value": [0, 1],
+      "arr_value": [0, 1],
       "operator": "nin"
     }
   ],
