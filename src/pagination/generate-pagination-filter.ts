@@ -34,6 +34,9 @@ export const generatePaginationFilter = (filter: filterDto[]) => {
                 filter_fn[generateMongoFilterKeyName(filterElement.name)] = {
                     ['$' + filterElement.operator]: filterElement.value
                 }
+        } else {
+            console.warn('filterElement must be instance of filterDto')
+            console.warn('filterElement:\n', filterElement)
         }
     }
     return filter_fn
