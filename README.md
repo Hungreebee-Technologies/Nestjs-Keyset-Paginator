@@ -12,6 +12,9 @@ Keyset pagination library made for nestjs(mongoose) by hungreebee technologies
 
 </div>
 
+## Changelog 3.0.5
+- Added warning logs in case invalid filter data passed.
+
 ## Changelog 3.0.4
 - Fixed PaginationDto for "$in" operator
 - Remove unusual log
