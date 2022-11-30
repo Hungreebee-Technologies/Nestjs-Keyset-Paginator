@@ -43,7 +43,7 @@ npm i nestjs-keyset-paginator
 
 ## Usage
 
-- In example.controller.ts use PaginationDto to Validate params and pass it to service.
+- In example.controller.ts, use PaginationDto to Validate params and pass it to the service.
 
 ```typescript
 import { PaginationDto, projectionDto } from 'nestjs-keyset-paginator'
@@ -68,7 +68,7 @@ export class ExampleController {
 }
 ```
 
-- Then in example.service.ts pass those params to "paginate()" along with you model (Mongoose Model).
+- Then in example.service.ts, pass those params to "paginate()" along with you model (Mongoose Model).
 
 ```typescript
 import paginate, { filterDto, projectionDto } from 'nestjs-keyset-paginator'
@@ -95,7 +95,7 @@ export class ExampleService {
 }
 ```
 
-- Paginate function will return with promise of:
+- The paginate function will return with the promise:
 
 ```
 { docs: docs, next_key }
@@ -105,7 +105,7 @@ export class ExampleService {
 
 ## Example param
 
-- Refer [src/common.types.ts](https://github.com/Hungreebee-Technologies/Nestjs-Keyset-Paginator/blob/master/src/common.types.ts)
+- Refer to [src/common.types.ts](https://github.com/Hungreebee-Technologies/Nestjs-Keyset-Paginator/blob/master/src/common.types.ts)
 for all supported filters and search types.
 
 Example:-
@@ -172,7 +172,7 @@ Example:
 }
 ```
 
-- To get next page use this "next_key" object as "start_key" in next request.
+- To get the next page, use this "next_key" object as "start_key" in the next request.
 
 Example:
 
@@ -208,13 +208,13 @@ Example:
 }
 ```
 
-- If you provide "start_key" this will skip previous Documents.
+- If you provide "start_key", this will skip previous documents.
 
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate if applicable.
+Please make sure to update tests as appropriate (if applicable).
 
 ## License
 
