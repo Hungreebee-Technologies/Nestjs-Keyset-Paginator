@@ -1,0 +1,122 @@
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>nestjs-keyset-paginator - v3.0.4</title><meta name="description" content="Documentation for nestjs-keyset-paginator - v3.0.4"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">nestjs-keyset-paginator - v3.0.4</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>nestjs-keyset-paginator - v3.0.4</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography"><div align=center>
+
+<img src="https://raw.githubusercontent.com/Hungreebee-Technologies/Nestjs-Keyset-Paginator/master/.github/assets/Hungrebee-Logo.png" alt="Hungreebe Technologies" height="80"/>
+
+
+<a href="#nestjs-keyset-paginator" id="nestjs-keyset-paginator" style="color: inherit; text-decoration: none;">
+  <h1>Nestjs-Keyset-Paginator</h1>
+</a>
+<p>Keyset pagination library made for nestjs(mongoose) by hungreebee technologies</p>
+<p><a href="https://www.npmjs.com/package/nestjs-keyset-paginator"><img src="https://badge.fury.io/js/nestjs-keyset-paginator.svg" alt="npm version"></a></p>
+
+<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+  <h3><a href="https://hungreebee-technologies.github.io/Nestjs-Keyset-Paginator/">Documentation</a></h3>
+</a>
+</div>
+
+
+<a href="#changelog-305" id="changelog-305" style="color: inherit; text-decoration: none;">
+  <h2>Changelog 3.0.5</h2>
+</a>
+<ul>
+<li>Added warning logs in case invalid filter data passed.</li>
+</ul>
+
+<a href="#changelog-304" id="changelog-304" style="color: inherit; text-decoration: none;">
+  <h2>Changelog 3.0.4</h2>
+</a>
+<ul>
+<li>Fixed PaginationDto for &quot;$in&quot; operator</li>
+<li>Remove unusual log</li>
+<li>Updated Examples</li>
+</ul>
+
+<a href="#changelog-303" id="changelog-303" style="color: inherit; text-decoration: none;">
+  <h2>Changelog 3.0.3</h2>
+</a>
+<ul>
+<li>Added support for nested field name in filterDto</li>
+<li>Done some corrections in PaginationDto</li>
+<li>Added OOP based approach initially</li>
+</ul>
+
+<a href="#changelog-302" id="changelog-302" style="color: inherit; text-decoration: none;">
+  <h2>Changelog 3.0.2</h2>
+</a>
+<ul>
+<li>fixed crash when sort value is null</li>
+<li>fixed nextKeyFn crash issue</li>
+</ul>
+
+<a href="#changelog-301" id="changelog-301" style="color: inherit; text-decoration: none;">
+  <h2>Changelog 3.0.1</h2>
+</a>
+<ul>
+<li>This version is backward compatible.</li>
+<li>Added $in and $nin mongo operator support in DTO.</li>
+</ul>
+
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h2>Installation</h2>
+</a>
+<p>Use the package manager <a href="npmjs.com/package/nestjs-keyset-paginator">npm</a> to install Nestjs-Keyset-Paginator.</p>
+<pre><code class="language-bash"><span class="hl-0">npm i nestjs-keyset-paginator</span>
+</code></pre>
+
+<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+  <h2>Usage</h2>
+</a>
+<ul>
+<li>In example.controller.ts, use PaginationDto to Validate params and pass it to the service.</li>
+</ul>
+<pre><code class="language-typescript"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">PaginationDto</span><span class="hl-0">, </span><span class="hl-2">projectionDto</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;nestjs-keyset-paginator&#39;</span><br/><br/><span class="hl-0">@</span><span class="hl-4">Controller</span><span class="hl-0">(</span><span class="hl-3">&#39;example&#39;</span><span class="hl-0">)</span><br/><span class="hl-1">export</span><span class="hl-0"> </span><span class="hl-5">class</span><span class="hl-0"> </span><span class="hl-6">ExampleController</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-5">constructor</span><span class="hl-0">(</span><span class="hl-5">private</span><span class="hl-0"> </span><span class="hl-5">readonly</span><span class="hl-0"> </span><span class="hl-2">exampleService</span><span class="hl-0">: </span><span class="hl-6">ExampleService</span><span class="hl-0">) {</span><br/><span class="hl-0">  }</span><br/><br/><span class="hl-0">  @</span><span class="hl-4">Get</span><span class="hl-0">()</span><br/><span class="hl-0">  </span><span class="hl-4">findAll</span><span class="hl-0">(@</span><span class="hl-4">Body</span><span class="hl-0">() </span><span class="hl-2">params</span><span class="hl-0">: </span><span class="hl-6">PaginationDto</span><span class="hl-0">) {</span><br/><span class="hl-0">    </span><span class="hl-1">return</span><span class="hl-0"> </span><span class="hl-5">this</span><span class="hl-0">.</span><span class="hl-2">exampleService</span><span class="hl-0">.</span><span class="hl-4">findAll</span><span class="hl-0">(</span><br/><span class="hl-0">      </span><span class="hl-2">params</span><span class="hl-0">.</span><span class="hl-2">skip</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">params</span><span class="hl-0">.</span><span class="hl-2">limit</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">params</span><span class="hl-0">?.</span><span class="hl-2">start_key</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">params</span><span class="hl-0">?.</span><span class="hl-2">sort</span><span class="hl-0">?.</span><span class="hl-2">field</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">params</span><span class="hl-0">?.</span><span class="hl-2">sort</span><span class="hl-0">?.</span><span class="hl-2">order</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">params</span><span class="hl-0">?.</span><span class="hl-2">filter</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-2">params</span><span class="hl-0">?.</span><span class="hl-2">projection</span><br/><span class="hl-0">    )</span><br/><span class="hl-0">  }</span><br/><span class="hl-0">}</span>
+</code></pre>
+<ul>
+<li>Then in example.service.ts, pass those params to &quot;paginate()&quot; along with you model (Mongoose Model).</li>
+</ul>
+<pre><code class="language-typescript"><span class="hl-1">import</span><span class="hl-0"> </span><span class="hl-2">paginate</span><span class="hl-0">, { </span><span class="hl-2">filterDto</span><span class="hl-0">, </span><span class="hl-2">projectionDto</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&#39;nestjs-keyset-paginator&#39;</span><br/><br/><span class="hl-0">@</span><span class="hl-4">Injectable</span><span class="hl-0">()</span><br/><span class="hl-1">export</span><span class="hl-0"> </span><span class="hl-5">class</span><span class="hl-0"> </span><span class="hl-6">ExampleService</span><span class="hl-0"> {</span><br/><span class="hl-0">  </span><span class="hl-5">constructor</span><span class="hl-0">(</span><br/><span class="hl-0">    @</span><span class="hl-4">Inject</span><span class="hl-0">(</span><span class="hl-7">EXAMPLE_MODEL</span><span class="hl-0">)</span><br/><span class="hl-0">    </span><span class="hl-5">private</span><span class="hl-0"> </span><span class="hl-5">readonly</span><span class="hl-0"> </span><span class="hl-2">exampleModel</span><span class="hl-0">: </span><span class="hl-6">Model</span><span class="hl-0">&lt;</span><span class="hl-6">ExampleDocument</span><span class="hl-0">&gt;</span><br/><span class="hl-0">  ) {</span><br/><span class="hl-0">  }</span><br/><br/><span class="hl-0">  </span><span class="hl-5">async</span><span class="hl-0"> </span><span class="hl-4">findAll</span><span class="hl-0">(</span><br/><span class="hl-0">    </span><span class="hl-2">skip</span><span class="hl-0"> = </span><span class="hl-8">0</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-2">limit</span><span class="hl-0"> = </span><span class="hl-8">10</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-2">start_key</span><span class="hl-0">?,</span><br/><span class="hl-0">    </span><span class="hl-2">sort_field</span><span class="hl-0">?: </span><span class="hl-6">string</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-2">sort_order</span><span class="hl-0">?: </span><span class="hl-6">number</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-2">filter</span><span class="hl-0">?: </span><span class="hl-6">filterDto</span><span class="hl-0">[],</span><br/><span class="hl-0">    </span><span class="hl-2">projection</span><span class="hl-0">?: </span><span class="hl-6">projectionDto</span><span class="hl-0">[]</span><br/><span class="hl-0">  ) {</span><br/><span class="hl-0">    </span><span class="hl-1">return</span><span class="hl-0"> </span><span class="hl-4">paginate</span><span class="hl-0">(</span><span class="hl-5">this</span><span class="hl-0">.</span><span class="hl-2">exampleModel</span><span class="hl-0">, </span><span class="hl-2">skip</span><span class="hl-0">, </span><span class="hl-2">limit</span><span class="hl-0">, </span><span class="hl-2">start_key</span><span class="hl-0">, </span><span class="hl-2">sort_field</span><span class="hl-0">, </span><span class="hl-2">sort_order</span><span class="hl-0">, </span><span class="hl-2">filter</span><span class="hl-0">, </span><span class="hl-2">projection</span><span class="hl-0">)</span><br/><span class="hl-0">  }</span><br/><span class="hl-0">}</span>
+</code></pre>
+<ul>
+<li>The paginate function will return with the promise:</li>
+</ul>
+<pre><code><span class="hl-0">{ </span><span class="hl-9">docs</span><span class="hl-0">: </span><span class="hl-2">docs</span><span class="hl-0">, </span><span class="hl-2">next_key</span><span class="hl-0"> }</span>
+</code></pre>
+<hr>
+
+<a href="#example-param" id="example-param" style="color: inherit; text-decoration: none;">
+  <h2>Example param</h2>
+</a>
+<ul>
+<li>Refer to <a href="https://github.com/Hungreebee-Technologies/Nestjs-Keyset-Paginator/blob/master/src/common.types.ts">src/common.types.ts</a>
+for all supported filters and search types.</li>
+</ul>
+<p>Example:-</p>
+<pre><code class="language-json"><span class="hl-0">{</span><br/><span class="hl-0">  </span><span class="hl-10">&quot;filter&quot;</span><span class="hl-0">: [</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;name&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;score&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;value&quot;</span><span class="hl-0">: </span><span class="hl-8">400</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;operator&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;lt&quot;</span><br/><span class="hl-0">    },</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;name&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;isPassed&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;value&quot;</span><span class="hl-0">: </span><span class="hl-5">true</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;operator&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;eq&quot;</span><br/><span class="hl-0">    },</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;name&quot;</span><span class="hl-0">: [</span><span class="hl-3">&quot;outer_field_name&quot;</span><span class="hl-0">, </span><span class="hl-3">&quot;inner_field_name&quot;</span><span class="hl-0">],</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;value&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;user one&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;operator&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;eq&quot;</span><br/><span class="hl-0">    },</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;name&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;time&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;arr_value&quot;</span><span class="hl-0">: [</span><span class="hl-8">40</span><span class="hl-0">, </span><span class="hl-8">60</span><span class="hl-0">],</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;operator&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;in&quot;</span><br/><span class="hl-0">    },</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;name&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;left_count&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;arr_value&quot;</span><span class="hl-0">: [</span><span class="hl-8">0</span><span class="hl-0">, </span><span class="hl-8">1</span><span class="hl-0">],</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;operator&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;nin&quot;</span><br/><span class="hl-0">    }</span><br/><span class="hl-0">  ],</span><br/><span class="hl-0">  </span><span class="hl-10">&quot;sort&quot;</span><span class="hl-0">: {</span><br/><span class="hl-0">    </span><span class="hl-10">&quot;field&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;score&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-10">&quot;order&quot;</span><span class="hl-0">: </span><span class="hl-8">1</span><br/><span class="hl-0">  },</span><br/><span class="hl-0">  </span><span class="hl-10">&quot;projection&quot;</span><span class="hl-0">: [</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;name&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;password&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;mode&quot;</span><span class="hl-0">: </span><span class="hl-8">0</span><br/><span class="hl-0">    }</span><br/><span class="hl-0">  ],</span><br/><span class="hl-0">  </span><span class="hl-10">&quot;limit&quot;</span><span class="hl-0">: </span><span class="hl-8">4</span><br/><span class="hl-0">}</span>
+</code></pre>
+<ul>
+<li>As response, you will also get &quot;next_key&quot;.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json"><span class="hl-0">{</span><br/><span class="hl-0">  </span><span class="hl-10">&quot;next_key&quot;</span><span class="hl-0">: [</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;key&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;_id&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;value&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;61a4c444f9534392c70afaf6&quot;</span><br/><span class="hl-0">    },</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;key&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;score&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;value&quot;</span><span class="hl-0">: </span><span class="hl-8">100</span><br/><span class="hl-0">    }</span><br/><span class="hl-0">  ]</span><br/><span class="hl-0">}</span>
+</code></pre>
+<ul>
+<li>To get the next page, use this &quot;next_key&quot; object as &quot;start_key&quot; in the next request.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-json"><span class="hl-0">{</span><br/><span class="hl-0">  </span><span class="hl-10">&quot;filter&quot;</span><span class="hl-0">: [</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;name&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;score&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;value&quot;</span><span class="hl-0">: </span><span class="hl-8">400</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;operator&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;lt&quot;</span><br/><span class="hl-0">    },</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;name&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;isPassed&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;value&quot;</span><span class="hl-0">: </span><span class="hl-5">true</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;operator&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;eq&quot;</span><br/><span class="hl-0">    }</span><br/><span class="hl-0">  ],</span><br/><span class="hl-0">  </span><span class="hl-10">&quot;sort&quot;</span><span class="hl-0">: {</span><br/><span class="hl-0">    </span><span class="hl-10">&quot;field&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;score&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">    </span><span class="hl-10">&quot;order&quot;</span><span class="hl-0">: </span><span class="hl-8">1</span><br/><span class="hl-0">  },</span><br/><span class="hl-0">  </span><span class="hl-10">&quot;limit&quot;</span><span class="hl-0">: </span><span class="hl-8">4</span><span class="hl-0">,</span><br/><span class="hl-0">  </span><span class="hl-10">&quot;start_key&quot;</span><span class="hl-0">: [</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;key&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;_id&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;value&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;61a4c444f9534392c70afaf6&quot;</span><br/><span class="hl-0">    },</span><br/><span class="hl-0">    {</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;key&quot;</span><span class="hl-0">: </span><span class="hl-3">&quot;score&quot;</span><span class="hl-0">,</span><br/><span class="hl-0">      </span><span class="hl-10">&quot;value&quot;</span><span class="hl-0">: </span><span class="hl-8">100</span><br/><span class="hl-0">    }</span><br/><span class="hl-0">  ]</span><br/><span class="hl-0">}</span>
+</code></pre>
+<ul>
+<li>If you provide &quot;start_key&quot;, this will skip previous documents.</li>
+</ul>
+
+<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
+  <h2>Contributing</h2>
+</a>
+<p>Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.</p>
+<p>Please make sure to update tests as appropriate (if applicable).</p>
+
+<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+  <h2>License</h2>
+</a>
+<p><a href="https://choosealicense.com/licenses/mit/">MIT</a></p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-reference"><a href="modules.html#default" class="tsd-kind-icon">default</a></li><li class="tsd-kind-enum"><a href="enums/ENUM_FILTER_OPERATOR_TYPE.html" class="tsd-kind-icon">ENUM_<wbr/>FILTER_<wbr/>OPERATOR_<wbr/>TYPE</a></li><li class="tsd-kind-enum"><a href="enums/REGEX_SEARCH_MODE_TYPE.html" class="tsd-kind-icon">REGEX_<wbr/>SEARCH_<wbr/>MODE_<wbr/>TYPE</a></li><li class="tsd-kind-class"><a href="classes/PaginationDto.html" class="tsd-kind-icon">Pagination<wbr/>Dto</a></li><li class="tsd-kind-class"><a href="classes/Paginator.html" class="tsd-kind-icon">Paginator</a></li><li class="tsd-kind-class"><a href="classes/filterDto.html" class="tsd-kind-icon">filter<wbr/>Dto</a></li><li class="tsd-kind-class"><a href="classes/projectionDto.html" class="tsd-kind-icon">projection<wbr/>Dto</a></li><li class="tsd-kind-class"><a href="classes/sortDto.html" class="tsd-kind-icon">sort<wbr/>Dto</a></li><li class="tsd-kind-class"><a href="classes/startKeyDto.html" class="tsd-kind-icon">start<wbr/>Key<wbr/>Dto</a></li><li class="tsd-kind-type-alias"><a href="modules.html#TYPE_MONGO_FIELD_NAME" class="tsd-kind-icon">TYPE_<wbr/>MONGO_<wbr/>FIELD_<wbr/>NAME</a></li><li class="tsd-kind-type-alias"><a href="modules.html#TYPE_STRING_NUM_ARRAY" class="tsd-kind-icon">TYPE_<wbr/>STRING_<wbr/>NUM_<wbr/>ARRAY</a></li><li class="tsd-kind-variable"><a href="modules.html#REGEX_MONGO_FIELD_NAME" class="tsd-kind-icon">REGEX_<wbr/>MONGO_<wbr/>FIELD_<wbr/>NAME</a></li><li class="tsd-kind-function"><a href="modules.html#generatePaginationFilter" class="tsd-kind-icon">generate<wbr/>Pagination<wbr/>Filter</a></li><li class="tsd-kind-function"><a href="modules.html#generatePaginationNextKey" class="tsd-kind-icon">generate<wbr/>Pagination<wbr/>Next<wbr/>Key</a></li><li class="tsd-kind-function"><a href="modules.html#generatePaginationNextKeyDtoArr" class="tsd-kind-icon">generate<wbr/>Pagination<wbr/>Next<wbr/>Key<wbr/>Dto<wbr/>Arr</a></li><li class="tsd-kind-function"><a href="modules.html#generatePaginationQuery" class="tsd-kind-icon">generate<wbr/>Pagination<wbr/>Query</a></li><li class="tsd-kind-function"><a href="modules.html#paginate" class="tsd-kind-icon">paginate</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
